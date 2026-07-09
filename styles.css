@@ -1,0 +1,459 @@
+/* ---------------------------------------------------------
+   Paradisa Studio — base styles
+   Palette: warm carbon black, ivory, deep desaturated green
+--------------------------------------------------------- */
+
+:root {
+  --bg: #15130f;
+  --bg-panel: #1c1913;
+  --ivory: #efe7d9;
+  --ivory-dim: #b2a996;
+  --line: rgba(239, 231, 217, 0.14);
+  --accent: #839c76;
+  --accent-dim: rgba(131, 156, 118, 0.35);
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --wrap-max: 1160px;
+  --wrap-pad: clamp(1.25rem, 4vw, 3rem);
+  --section-pad: clamp(4.5rem, 11vw, 7.5rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin: 0;
+  color: var(--ivory);
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--ivory-dim);
+  max-width: 60ch;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+em {
+  color: var(--ivory);
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  z-index: 100;
+  background: var(--ivory);
+  color: var(--bg);
+  padding: 0.75em 1.25em;
+  border-radius: 3px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   Header
+--------------------------------------------------------- */
+
+.site-header {
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ivory);
+}
+
+.site-header nav {
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.site-header nav a {
+  position: relative;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--ivory-dim);
+  padding-bottom: 0.2em;
+}
+
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: var(--ivory);
+}
+
+.site-header nav a:hover::after,
+.site-header nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------------------------------------
+   Hero
+--------------------------------------------------------- */
+
+.hero {
+  padding-block: clamp(3rem, 8vw, 5rem) var(--section-pad);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: end;
+}
+
+.hero h1 {
+  font-size: clamp(3.75rem, 11vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.hero-kicker {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ivory);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 40ch;
+}
+
+.hero-lead {
+  color: var(--ivory);
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  max-width: 34ch;
+}
+
+/* ---------------------------------------------------------
+   Section labels (shared)
+--------------------------------------------------------- */
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+section {
+  padding-block: var(--section-pad);
+  border-top: 1px solid var(--line);
+}
+
+.hero {
+  border-top: none;
+}
+
+/* ---------------------------------------------------------
+   What we do
+--------------------------------------------------------- */
+
+.discipline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.discipline-list li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 1.1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: baseline;
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--line);
+}
+
+.discipline-list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.discipline-index {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.discipline-list h3 {
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+}
+
+.discipline-list p {
+  max-width: 46ch;
+}
+
+/* ---------------------------------------------------------
+   Selected work
+--------------------------------------------------------- */
+
+.work-feature {
+  padding-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.work-feature-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.work-feature h3 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.status-tag {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 999px;
+  padding: 0.35em 0.9em;
+}
+
+.work-lead {
+  color: var(--ivory);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 50ch;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.work-item {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+
+.work-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------------------------------------------------------
+   About
+--------------------------------------------------------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.about-copy p {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  color: var(--ivory);
+  max-width: 52ch;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   Contact
+--------------------------------------------------------- */
+
+.contact-link {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  text-decoration: none;
+  color: var(--ivory);
+}
+
+.contact-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.contact-link:hover::after,
+.contact-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------------------------------------
+   Footer
+--------------------------------------------------------- */
+
+.site-footer {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer p {
+  font-size: 0.85rem;
+  color: var(--ivory-dim);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   Reveal-on-scroll (progressive enhancement)
+--------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .site-header nav a::after,
+  .contact-link::after {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------
+   Responsive
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .discipline-list li {
+    grid-template-columns: 3.5rem 1fr;
+  }
+
+  .discipline-list p {
+    grid-column: 2 / 3;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    gap: 1rem;
+  }
+
+  .site-header nav {
+    gap: 1.25rem;
+  }
+
+  .discipline-list li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .discipline-list p {
+    grid-column: auto;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-feature-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
